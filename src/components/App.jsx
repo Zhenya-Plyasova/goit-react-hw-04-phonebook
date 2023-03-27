@@ -5,8 +5,8 @@ import { ContactList } from "./ContactList/ContactList";
 import { Filter } from "./Filter/Filter";
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('')
+  const [contacts, setContacts] = useState(() => { return JSON.parse(localStorage.getItem('contacts')) ?? [] });
+  const [filter, setFilter] = useState('');
 
   const createContact = data => {
     const checkNewContact = contacts.find(({name})=>name===data.name);
@@ -28,26 +28,13 @@ export const App = () => {
     setFilter(e.currentTarget.value.toLowerCase())
   }
   const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter));
-  
-  useEffect(() => {
-    // if (localStorage.getItem('contacts')) {
-    const contactsLS = JSON.parse(localStorage.getItem('contacts'))??[];
-      setContacts(contactsLS);
-    // }
-  }, []);
 
   useEffect(() => {
-        localStorage.setItem('contacts', JSON.stringify(contacts));
+       (contacts.length!==0) && localStorage.setItem('contacts', JSON.stringify(contacts));
     },
     [contacts]
   );
-  
-
-  // componentDidUpdate(_, prevState) {
-  //   if (prevState.contacts.length !== this.state.contacts.length) {
-  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  //   }
-  // }
+ 
     return (
       <div
         style={{

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import css from "./ContactForm.module.css";
+import PropTypes from 'prop-types';
 
 export const ContactForm = ({createContact}) => {
   const [name, setName] = useState('');
@@ -62,4 +63,7 @@ export const ContactForm = ({createContact}) => {
         </div>
       </form>
     );
-  }
+}
+ContactForm.propTypes = {
+  createContact: PropTypes.func.isRequired,
+};
