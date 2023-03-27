@@ -1,0 +1,21 @@
+.contactForm {
+    background-color: rgb(199, 252, 252);
+    padding: 25px;
+    width: 500px;
+}
+.submit {
+    width: 180px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.inputName {
+    margin: 0;
+}
+.inputContact{
+    width: 400px; 
+    margin: 15px 0;
+    padding: 7px;
+}
+.formContainer{
+    display: grid;
+}
