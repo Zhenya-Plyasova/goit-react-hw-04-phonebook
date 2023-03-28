@@ -12,9 +12,10 @@ export const ContactForm = ({createContact}) => {
         setName(target.value);
         break;
     
-      default:
+      case 'number':
         setNumber(target.value);
         break;
+      default: console.log("hi");
     }
   };
   const handleSubmit = e => {
